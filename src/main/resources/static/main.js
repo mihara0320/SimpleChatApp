@@ -1,11 +1,14 @@
+
 var stompClient = null;
 
 function connect() {
     var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        stompClient.subscribe('/board/message', function (post) {
+            console.log(post)
+            console.log(JSON.parse(post.body).content)
+            showPost(JSON.parse(post.body).content);
         });
     });
 }
@@ -16,10 +19,24 @@ function disconnect() {
     }
 }
 
-function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+function sendInfo() {
+    stompClient.send("/app/post", {}, JSON.stringify({'name': $("#name").val()}));
+//    stompClient.send("/app/message", {}, JSON.stringify({'message': $("#message").val()}));
+//    stompClient.send("/app/post", {}, {}));
 }
 
-function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+function showPost(post) {
+    console.log(post)
+    $("#message-board").append("<tr><td>" + post + "</td></tr>");
 }
+
+$(function () {
+    connect();
+
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $("#post").click(function() {
+        sendInfo();
+    });
+});

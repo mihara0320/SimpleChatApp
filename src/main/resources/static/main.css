@@ -22,6 +22,10 @@
 }
 
 #message-board{
-    width: 60%;
-    height: 60%
+    width: 90%;
+    height: 50%;
+}
+#post-form {
+    width: 90%;
+    height: 50%;
 }
