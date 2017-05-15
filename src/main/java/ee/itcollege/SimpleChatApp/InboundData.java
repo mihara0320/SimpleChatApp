@@ -5,8 +5,10 @@ package ee.itcollege.SimpleChatApp;
  */
 public class InboundData {
 
+    private String time;
     private String name;
     private String message;
+
 
     public InboundData() {
     }
@@ -15,6 +17,14 @@ public class InboundData {
 
         this.name = name;
         this.message = message;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getName() {

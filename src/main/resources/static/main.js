@@ -6,8 +6,6 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/board/message', function (post) {
-            console.log(post)
-            console.log(JSON.parse(post.body).content)
             showPost(JSON.parse(post.body).content);
         });
     });
@@ -21,15 +19,17 @@ function disconnect() {
 
 function sendInfo() {
     var data = {
+        time: new Date().toLocaleString(),
         name: $("#name").val(),
         message: $("#message").val()
     }
+    console.log(data.time)
     stompClient.send("/app/post",{}, JSON.stringify(data));
 }
 
 function showPost(post) {
-    console.log(post)
-    $("#message-board").append("<tr><td>" + post.name + "</td></tr>");
+    $("#message-board").append("<tr><td>" + "Date: " + post.time + "</td></tr>");
+    $("#message-board").append("<tr><td>" + "Name: " + post.name + "</td></tr>");
     $("#message-board").append("<tr><td>" + post.message + "</td></tr>");
 }
 
