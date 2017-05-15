@@ -20,14 +20,20 @@ function disconnect() {
 }
 
 function sendInfo() {
-    stompClient.send("/app/post", {}, JSON.stringify({'name': $("#name").val()}));
+var data = {
+    name: $("#name").val(),
+    message: $("#message").val()
+}
+    stompClient.send("/app/post",{}, JSON.stringify(data));
+//    stompClient.send("/app/post", {}, JSON.stringify({'name': $("#name").val()}));
 //    stompClient.send("/app/message", {}, JSON.stringify({'message': $("#message").val()}));
 //    stompClient.send("/app/post", {}, {}));
 }
 
 function showPost(post) {
     console.log(post)
-    $("#message-board").append("<tr><td>" + post + "</td></tr>");
+    $("#message-board").append("<tr><td>" + post.name + "</td></tr>");
+    $("#message-board").append("<tr><td>" + post.message + "</td></tr>");
 }
 
 $(function () {

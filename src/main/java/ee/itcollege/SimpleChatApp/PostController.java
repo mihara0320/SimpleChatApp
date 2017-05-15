@@ -13,10 +13,12 @@ public class PostController {
 
     @MessageMapping("/post")
     @SendTo("/board/message")
-    public Post message(Message message) throws Exception {
-        System.out.println(message.getName());
+    public Post message(Message data) throws Exception {
+
+        System.out.println(data.getName());
+        System.out.println(data.getMessage());
         Thread.sleep(1000); // simulated delay
-        return new Post(message.getName());
+        return new Post(data);
     }
 
 }

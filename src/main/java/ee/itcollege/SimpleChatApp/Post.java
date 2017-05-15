@@ -1,20 +1,22 @@
 package ee.itcollege.SimpleChatApp;
 
+import java.util.Objects;
+
 /**
  * Created by masaki on 5/11/2017.
  */
 public class Post {
 
-    private String content;
+    private Object content;
 
     public Post() {
     }
 
-    public Post(String content) {
+    public Post(Object content) {
         this.content = content;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 }
