@@ -20,14 +20,11 @@ function disconnect() {
 }
 
 function sendInfo() {
-var data = {
-    name: $("#name").val(),
-    message: $("#message").val()
-}
+    var data = {
+        name: $("#name").val(),
+        message: $("#message").val()
+    }
     stompClient.send("/app/post",{}, JSON.stringify(data));
-//    stompClient.send("/app/post", {}, JSON.stringify({'name': $("#name").val()}));
-//    stompClient.send("/app/message", {}, JSON.stringify({'message': $("#message").val()}));
-//    stompClient.send("/app/post", {}, {}));
 }
 
 function showPost(post) {

@@ -1,18 +1,16 @@
 package ee.itcollege.SimpleChatApp;
 
-import java.util.Objects;
-
 /**
  * Created by masaki on 5/11/2017.
  */
-public class Post {
+public class OutboundData {
 
     private Object content;
 
-    public Post() {
+    public OutboundData() {
     }
 
-    public Post(Object content) {
+    public OutboundData(Object content) {
         this.content = content;
     }
 

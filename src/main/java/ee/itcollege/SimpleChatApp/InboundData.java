@@ -3,15 +3,15 @@ package ee.itcollege.SimpleChatApp;
 /**
  * Created by masaki on 5/13/2017.
  */
-public class Message {
+public class InboundData {
 
     private String name;
     private String message;
 
-    public Message() {
+    public InboundData() {
     }
 
-    public Message(String name, String message) {
+    public InboundData(String name, String message) {
 
         this.name = name;
         this.message = message;
